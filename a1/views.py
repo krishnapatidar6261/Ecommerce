@@ -527,7 +527,7 @@ def mycart(request):
         return render(request,'login.html')
 
 def remove_from_cart(request,pk):
-    user=User.objects.get(email=request.session['email'])
+    user=User.objects.get(email=request.user.email)
     product=Product.objects.get(pk=pk)
     cart=Cart.objects.get(user=user,product=product,payment_status=False)
     
